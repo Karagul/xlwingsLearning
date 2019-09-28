@@ -4,10 +4,12 @@ import datetime as dt
 #chapter : python to excel
 #新建工作簿方式：
 
+app = xw.App(visible=False,add_book=False)
+
+app.screen_updating = False
+
 wb = xw.Book(r'E:\PycharmProjects\xlwingsLearning\xltemplates\template1.xlsx') #直接新建一个临时工作簿
 
-
-screen_updating = False
 
 # wb = xw.books.add() # 执行报错
 #
@@ -79,8 +81,8 @@ max_sht_column_index = sht.used_range.last_cell.column
 print(max_sht_column_index)
 
 
-for i in range(1,max_sht_row_index):
-    sht.cells(i,'A').value = i * 100
+for i in range(1,max_sht_row_index + 100):
+    sht.cells(i,'A').value = i * 10
 
 # 设置单元格颜色
 sht.range('A1').color = (168,13,245)
@@ -92,9 +94,6 @@ sht.range('A1').api.Font.Bold = True
 sht.range('A1').api.Font.Size = 13
 
 sht.autofit('c')
-
-
-wb.screen_updating = True
 
 
 
