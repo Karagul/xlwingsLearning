@@ -1,4 +1,5 @@
 import xlwings as xw
+import datetime as dt
 
 #chapter : python to excel
 #新建工作簿方式：
@@ -47,16 +48,32 @@ sht = wb.sheets(2)
 sht.range('A1').value = 3
 
 #Range索引/切片
-rng = sht.range('A2:F2')
+# rng = sht.range('A2:F2')
+#
+# print(rng[0,0].value)
+#
+# print(rng[1].value)
+#
+# print(rng[:,3:].value)
+#
+# print(rng[0,:].value)
 
-print(rng[0,0].value)
+sht.range('A5').value = dt.datetime(2019,9,28,16,8,25,999999)
+sht.range('A6').value = [[1],[2],[3],[4],[5]]
+sht.range('B6').options(transpose = True).value = [1,2,3,4,5,6,7]
 
-print(rng[1].value)
+sht.range('B13').value = [['A','B','C'],[11,22,33]]
+# 获取A列最大行
+max_columnA_row_index = sht.range('A:A').last_cell.end('up').row
 
-print(rng[:,3:].value)
 
-print(rng[0,:].value)
+print(max_columnA_row_index)
 
+#获取sheet表格最后一行行号和列号
+max_sht_row_index = sht.used_range.last_cell.row
+print(max_sht_row_index)
+max_sht_column_index = sht.used_range.last_cell.column
+print(max_sht_column_index)
 
 
 
