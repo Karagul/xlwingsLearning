@@ -6,6 +6,9 @@ import datetime as dt
 
 wb = xw.Book(r'E:\PycharmProjects\xlwingsLearning\xltemplates\template1.xlsx') #直接新建一个临时工作簿
 
+
+.screen_updating = False
+
 # wb = xw.books.add() # 执行报错
 #
 # #xw.Book('Book1')
@@ -74,6 +77,25 @@ max_sht_row_index = sht.used_range.last_cell.row
 print(max_sht_row_index)
 max_sht_column_index = sht.used_range.last_cell.column
 print(max_sht_column_index)
+
+
+for i in range(1,max_sht_row_index):
+    sht.cells(i,'A').value = i * 100
+
+# 设置单元格颜色
+sht.range('A1').color = (168,13,245)
+
+#设置单元格字体大小、颜色、字体名称、粗体
+sht.range('A1').api.Font.Name = 'Times New Roman'
+sht.range('A1').api.Font.Color = 0xFFFFFF
+sht.range('A1').api.Font.Bold = True
+sht.range('A1').api.Font.Size = 13
+
+sht.autofit('c')
+
+
+wb.screen_updating = True
+
 
 
 
