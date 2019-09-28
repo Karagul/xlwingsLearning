@@ -7,7 +7,7 @@ import datetime as dt
 wb = xw.Book(r'E:\PycharmProjects\xlwingsLearning\xltemplates\template1.xlsx') #直接新建一个临时工作簿
 
 
-.screen_updating = False
+screen_updating = False
 
 # wb = xw.books.add() # 执行报错
 #
